@@ -79,7 +79,7 @@ public class Main extends Application {
         // Create the app kit. It won't do any heavyweight initialization until after we start it.
         bitcoin = new WalletAppKit(params, new File("."), APP_NAME);
         if (params == RegTestParams.get()) {
-            bitcoin.connectToLocalHost();   // You should run a regtest mode bitcoind locally.
+            bitcoin.connectToLocalHost();
         } else if (params == MainNetParams.get()) {
             // Checkpoints are block headers that ship inside our app: for a new user, we pick the last header
             // in the checkpoints file and then download the rest from the network. It makes things much faster.
