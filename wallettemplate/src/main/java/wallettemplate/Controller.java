@@ -1,9 +1,9 @@
 package wallettemplate;
 
-import com.google.litecoin.core.AbstractWalletEventListener;
-import com.google.litecoin.core.DownloadListener;
-import com.google.litecoin.core.Utils;
-import com.google.litecoin.core.Wallet;
+import com.google.colchestercoin.core.AbstractWalletEventListener;
+import com.google.colchestercoin.core.DownloadListener;
+import com.google.colchestercoin.core.Utils;
+import com.google.colchestercoin.core.Wallet;
 import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;

@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-package com.google.litecoin.core;
+package com.google.colchestercoin.core;
 
 import com.google.common.util.concurrent.ListenableFuture;
-import com.google.litecoin.core.*;
-import com.google.litecoin.params.UnitTestParams;
-import com.google.litecoin.store.MemoryBlockStore;
-import com.google.litecoin.utils.TestUtils;
-import com.google.litecoin.utils.Threading;
+import com.google.colchestercoin.params.UnitTestParams;
+import com.google.colchestercoin.store.MemoryBlockStore;
+import com.google.colchestercoin.utils.TestUtils;
+import com.google.colchestercoin.utils.Threading;
 import org.junit.Before;
 import org.junit.Test;
 

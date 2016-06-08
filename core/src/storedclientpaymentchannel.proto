@@ -24,7 +24,7 @@
 
 package paymentchannels;
 
-option java_package = "com.google.litecoin.protocols.channels";
+option java_package = "com.google.colchestercoin.protocols.channels";
 option java_outer_classname = "ClientState";
 
 

@@ -1,6 +1,6 @@
 package wallettemplate.controls;
 
-import com.google.litecoin.uri.BitcoinURI;
+import com.google.colchestercoin.uri.BitcoinURI;
 import de.jensd.fx.fontawesome.AwesomeDude;
 import de.jensd.fx.fontawesome.AwesomeIcon;
 import javafx.beans.property.StringProperty;

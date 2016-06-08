@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.litecoin.crypto;
+package com.google.colchestercoin.crypto;
 
 import com.google.common.base.Joiner;
 import org.junit.Before;

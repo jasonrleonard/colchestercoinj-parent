@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.google.litecoin.wallet;
+package com.google.colchestercoin.wallet;
 
-import com.google.litecoin.core.*;
-import com.google.litecoin.params.UnitTestParams;
+import com.google.colchestercoin.core.*;
+import com.google.colchestercoin.params.UnitTestParams;
 import com.google.common.collect.ImmutableList;
 import org.junit.Before;
 import org.junit.Test;
