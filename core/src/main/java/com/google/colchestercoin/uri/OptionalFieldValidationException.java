@@ -11,7 +11,7 @@ package com.google.colchestercoin.uri;
  * @since 0.3.0
  *         
  */
-public class OptionalFieldValidationException extends BitcoinURIParseException {
+public class OptionalFieldValidationException extends ColchestercoinURIParseException {
 
     public OptionalFieldValidationException(String s) {
         super(s);

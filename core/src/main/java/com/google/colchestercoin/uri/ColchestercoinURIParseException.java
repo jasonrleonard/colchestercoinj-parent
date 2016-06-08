@@ -19,7 +19,7 @@
 package com.google.colchestercoin.uri;
 
 /**
- * <p>Exception to provide the following to {@link BitcoinURI}:</p>
+ * <p>Exception to provide the following to {@link ColchestercoinURI}:</p>
  * <ul>
  * <li>Provision of parsing error messages</li>
  * </ul>
@@ -27,12 +27,12 @@ package com.google.colchestercoin.uri;
  * that reported in the exception message). Since this is in English, it may not be worth reporting directly
  * to the user other than as part of a "general failure to parse" response.</p>
  */
-public class BitcoinURIParseException extends Exception {
-    public BitcoinURIParseException(String s) {
+public class ColchestercoinURIParseException extends Exception {
+    public ColchestercoinURIParseException(String s) {
         super(s);
     }
 
-    public BitcoinURIParseException(String s, Throwable throwable) {
+    public ColchestercoinURIParseException(String s, Throwable throwable) {
         super(s, throwable);
     }
 }

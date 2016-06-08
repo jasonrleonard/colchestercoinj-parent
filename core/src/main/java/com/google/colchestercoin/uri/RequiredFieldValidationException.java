@@ -1,7 +1,7 @@
 package com.google.colchestercoin.uri;
 
 /**
- * <p>Exception to provide the following to {@link BitcoinURI}:</p>
+ * <p>Exception to provide the following to {@link ColchestercoinURI}:</p>
  * <ul>
  * <li>Provision of parsing error messages</li>
  * </ul>
@@ -12,7 +12,7 @@ package com.google.colchestercoin.uri;
  * @since 0.3.0
  *         
  */
-public class RequiredFieldValidationException extends BitcoinURIParseException {
+public class RequiredFieldValidationException extends ColchestercoinURIParseException {
 
     public RequiredFieldValidationException(String s) {
         super(s);

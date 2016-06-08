@@ -75,11 +75,11 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @author Gary Rowe (BIP21 support)
  * @see <a href="https://en.litecoin.it/wiki/BIP_0021">BIP 0021</a>
  */
-public class BitcoinURI {
+public class ColchestercoinURI {
     /**
      * Provides logging for this class
      */
-    private static final Logger log = LoggerFactory.getLogger(BitcoinURI.class);
+    private static final Logger log = LoggerFactory.getLogger(ColchestercoinURI.class);
 
     // Not worth turning into an enum
     public static final String FIELD_MESSAGE = "message";
@@ -98,12 +98,12 @@ public class BitcoinURI {
     private final Map<String, Object> parameterMap = new LinkedHashMap<String, Object>();
 
     /**
-     * Constructs a new BitcoinURI from the given string. Can be for any network.
+     * Constructs a new ColchestercoinURI from the given string. Can be for any network.
      *
      * @param uri The raw URI data to be parsed (see class comments for accepted formats)
-     * @throws BitcoinURIParseException if the URI is not syntactically or semantically valid.
+     * @throws ColchestercoinURIParseException if the URI is not syntactically or semantically valid.
      */
-    public BitcoinURI(String uri) throws BitcoinURIParseException {
+    public ColchestercoinURI(String uri) throws ColchestercoinURIParseException {
         this(null, uri);
     }
 
@@ -114,9 +114,9 @@ public class BitcoinURI {
      *               any expectation about what network the URI is for and wish to check yourself.
      * @param input The raw URI data to be parsed (see class comments for accepted formats)
      *
-     * @throws BitcoinURIParseException If the input fails Bitcoin URI syntax and semantic checks.
+     * @throws ColchestercoinURIParseException If the input fails Bitcoin URI syntax and semantic checks.
      */
-    public BitcoinURI(@Nullable NetworkParameters params, String input) throws BitcoinURIParseException {
+    public ColchestercoinURI(@Nullable NetworkParameters params, String input) throws ColchestercoinURIParseException {
         checkNotNull(input);
         log.debug("Attempting to parse '{}' for {}", input, params == null ? "any" : params.getId());
 
@@ -125,7 +125,7 @@ public class BitcoinURI {
         try {
             uri = new URI(input);
         } catch (URISyntaxException e) {
-            throw new BitcoinURIParseException("Bad URI syntax", e);
+            throw new ColchestercoinURIParseException("Bad URI syntax", e);
         }
 
         // URI is formed as  colchestercoin:<address>?<query parameters>
@@ -143,13 +143,13 @@ public class BitcoinURI {
         } else if (input.startsWith("colchestercoin:")) {
             schemeSpecificPart = input.substring("colchestercoin:".length());
         } else {
-            throw new BitcoinURIParseException("Unsupported URI scheme: " + uri.getScheme());
+            throw new ColchestercoinURIParseException("Unsupported URI scheme: " + uri.getScheme());
         }
 
         // Split off the address from the rest of the query parameters.
         String[] addressSplitTokens = schemeSpecificPart.split("\\?");
         if (addressSplitTokens.length == 0 || "".equals(addressSplitTokens[0])) {
-            throw new BitcoinURIParseException("Missing address");
+            throw new ColchestercoinURIParseException("Missing address");
         }
         String addressToken = addressSplitTokens[0];
 
@@ -162,7 +162,7 @@ public class BitcoinURI {
                 // Split into '<name>=<value>' tokens.
                 nameValuePairTokens = addressSplitTokens[1].split("&");
             } else {
-                throw new BitcoinURIParseException("Too many question marks in URI '" + uri + "'");
+                throw new ColchestercoinURIParseException("Too many question marks in URI '" + uri + "'");
             }
         }
 
@@ -175,20 +175,20 @@ public class BitcoinURI {
      * @param nameValuePairTokens The tokens representing the name value pairs (assumed to be
      *                            separated by '=' e.g. 'amount=0.2')
      */
-    private void parseParameters(@Nullable NetworkParameters params, String addressToken, String[] nameValuePairTokens) throws BitcoinURIParseException {
+    private void parseParameters(@Nullable NetworkParameters params, String addressToken, String[] nameValuePairTokens) throws ColchestercoinURIParseException {
         // Attempt to parse the addressToken as a Bitcoin address for this network
         try {
             Address address = new Address(params, addressToken);
             putWithValidation(FIELD_ADDRESS, address);
         } catch (final AddressFormatException e) {
-            throw new BitcoinURIParseException("Bad address", e);
+            throw new ColchestercoinURIParseException("Bad address", e);
         }
         
         // Attempt to decode the rest of the tokens into a parameter map.
         for (String nameValuePairToken : nameValuePairTokens) {
             String[] tokens = nameValuePairToken.split("=");
             if (tokens.length != 2 || "".equals(tokens[0])) {
-                throw new BitcoinURIParseException("Malformed Bitcoin URI - cannot parse name value pair '" +
+                throw new ColchestercoinURIParseException("Malformed Bitcoin URI - cannot parse name value pair '" +
                         nameValuePairToken + "'");
             }
 
@@ -232,9 +232,9 @@ public class BitcoinURI {
      * @param key The key for the map
      * @param value The value to store
      */
-    private void putWithValidation(String key, Object value) throws BitcoinURIParseException {
+    private void putWithValidation(String key, Object value) throws ColchestercoinURIParseException {
         if (parameterMap.containsKey(key)) {
-            throw new BitcoinURIParseException(String.format("'%s' is duplicated, URI is invalid", key));
+            throw new ColchestercoinURIParseException(String.format("'%s' is duplicated, URI is invalid", key));
         } else {
             parameterMap.put(key, value);
         }
@@ -279,7 +279,7 @@ public class BitcoinURI {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder("BitcoinURI[");
+        StringBuilder builder = new StringBuilder("ColchestercoinURI[");
         boolean first = true;
         for (Map.Entry<String, Object> entry : parameterMap.entrySet()) {
             if (first) {
