@@ -16,7 +16,7 @@
 package com.google.colchestercoin.crypto;
 
 import com.google.protobuf.ByteString;
-import com.lambdaworks.crypto.SCrypt;
+import org.spongycastle.crypto.generators.SCrypt;
 import org.colchestercoinj.wallet.Protos;
 import org.colchestercoinj.wallet.Protos.ScryptParameters;
 import org.colchestercoinj.wallet.Protos.Wallet.EncryptionType;
@@ -123,7 +123,7 @@ public class KeyCrypterScrypt implements KeyCrypter, Serializable {
                 log.warn("You are using a ScryptParameters with no salt. Your encryption may be vulnerable to a dictionary attack.");
             }
 
-            byte[] keyBytes = SCrypt.scrypt(passwordBytes, salt, (int) scryptParameters.getN(), scryptParameters.getR(), scryptParameters.getP(), KEY_LENGTH);
+            byte[] keyBytes = SCrypt.generate(passwordBytes, salt, (int) scryptParameters.getN(), scryptParameters.getR(), scryptParameters.getP(), KEY_LENGTH);
             return new KeyParameter(keyBytes);
         } catch (Exception e) {
             throw new KeyCrypterException("Could not generate key from password and salt.", e);

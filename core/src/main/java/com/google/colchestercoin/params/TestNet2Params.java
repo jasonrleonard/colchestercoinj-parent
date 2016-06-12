@@ -17,6 +17,7 @@
 package com.google.colchestercoin.params;
 
 import com.google.colchestercoin.core.NetworkParameters;
+import com.google.colchestercoin.core.Sha256Hash;
 import com.google.colchestercoin.core.Utils;
 
 import static com.google.common.base.Preconditions.checkState;
@@ -29,20 +30,21 @@ public class TestNet2Params extends NetworkParameters {
     public TestNet2Params() {
         super();
         id = ID_TESTNET;
-        packetMagic = 0xfcc1b7dc;
-        port = 19333;
-        addressHeader = 111;
-        p2shHeader = 196;
+        packetMagic = 0xfbc0b6db;
+        port = 29333;
+        addressHeader = 28;
+        p2shHeader = 22;
         acceptableAddressCodes = new int[] { addressHeader, p2shHeader };
         interval = INTERVAL;
         targetTimespan = TARGET_TIMESPAN;
         proofOfWorkLimit = Utils.decodeCompactBits(0x1d0fffffL);
-        dumpedPrivateKeyHeader = 239;
-        genesisBlock.setTime(1320884152L);
-        genesisBlock.setDifficultyTarget(0x1d07fff8L);
-        genesisBlock.setNonce(3562614017L);
+        dumpedPrivateKeyHeader = 156;
+        genesisBlock.setTime(1460409903L);
+        genesisBlock.setDifficultyTarget(0x1e0ffff0);
+        genesisBlock.setNonce(106749L);
         spendableCoinbaseDepth = 100;
         subsidyDecreaseBlockCount = 840000;
+        genesisBlock.setMerkleRoot(new Sha256Hash("0072849199923b05d61ffb0814527b730778c5a479fa869581316c187e6ec1da"));
         String genesisHash = genesisBlock.getHashAsString();
         LOGGER.info("Genesis Hash: " + genesisHash.toString());
         dnsSeeds = null;

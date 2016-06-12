@@ -42,13 +42,13 @@ import static com.google.colchestercoin.core.Utils.COIN;
  * intended for unit testing and local app development purposes. Although this class contains some aliases for
  * them, you are encouraged to call the static get() methods on each specific params class directly.</p>
  */
-public abstract class NetworkParameters implements Serializable {
+public abstract class   NetworkParameters implements Serializable {
     protected static Logger LOGGER;
 
     /**
      * The protocol version this library implements.
      */
-    public static final int PROTOCOL_VERSION = 70002;
+    public static final int PROTOCOL_VERSION = 70003;
 
     /**
      * The alert signing key originally owned by Satoshi, and now passed on to Gavin along with a few others.
@@ -105,11 +105,11 @@ public abstract class NetworkParameters implements Serializable {
             //
             //   "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks"
             byte[] bytes = Hex.decode
-                    ("04b217bb4e022309");
+                    ("04ffff001d0104394e592054696d65732031312f4170722f3230313620536369656e746973747320556e7665696c204e6577202754726565206f66204c69666527");
             t.addInput(new TransactionInput(n, t, bytes));
             ByteArrayOutputStream scriptPubKeyBytes = new ByteArrayOutputStream();
             Script.writeBytes(scriptPubKeyBytes, Hex.decode
-                    ("41044870341873accab7600d65e204bb4ae47c43d20c562ebfbf70cbcb188da98dec8b5ccf0526c8e4d954c6b47b898cc30adf1ff77c2e518ddc9785b87ccb90b8cdac"));
+                    ("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f"));
             scriptPubKeyBytes.write(ScriptOpCodes.OP_CHECKSIG);
             t.addOutput(new TransactionOutput(n, t, Utils.toNanoCoins(50, 0), scriptPubKeyBytes.toByteArray()));
         } catch (Exception e) {
@@ -129,7 +129,7 @@ public abstract class NetworkParameters implements Serializable {
      * network rules in a soft-forking manner, that is, blocks that don't follow the rules are accepted but not
      * mined upon and thus will be quickly re-orged out as long as the majority are enforcing the rule.
      */
-    public static final int BIP16_ENFORCE_TIME = 1333238400;
+    public static final int BIP16_ENFORCE_TIME = 1460409903;
     
     /**
      * The maximum money to be generated

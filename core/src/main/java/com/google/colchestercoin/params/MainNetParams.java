@@ -36,18 +36,18 @@ public class MainNetParams extends NetworkParameters {
         targetTimespan = TARGET_TIMESPAN;
         proofOfWorkLimit = Utils.decodeCompactBits(0x1e0fffffL);
         addressHeader = 28;
-        p2shHeader = 22;
+        p2shHeader = 5;
         acceptableAddressCodes = new int[] { addressHeader, p2shHeader };
-        dumpedPrivateKeyHeader = 156;
+        dumpedPrivateKeyHeader = 128;
         port = 29333;
-        packetMagic = 0xfbc0b6db;
+        packetMagic = 0xFBC0B6DBL;
         genesisBlock.setDifficultyTarget(0x1e0ffff0);
         genesisBlock.setTime(1460409903L);
-        genesisBlock.setNonce(106749L);
+        genesisBlock.setNonce(106749);
         genesisBlock.setMerkleRoot(new Sha256Hash("0072849199923b05d61ffb0814527b730778c5a479fa869581316c187e6ec1da"));
 
         id = ID_MAINNET;
-        subsidyDecreaseBlockCount = 840000;
+        subsidyDecreaseBlockCount = 2;
         spendableCoinbaseDepth = 100;
         String genesisHash = genesisBlock.getHashAsString();
         checkState(genesisHash.equals("6989fa140ccf5b8be8a699fa2edb7618ca1a66cfd11367b65df078f438678732"),
@@ -63,6 +63,7 @@ public class MainNetParams extends NetworkParameters {
         checkpoints.put(91880, new Sha256Hash("00000000000743f190a18c5577a3c2d2a1f610ae9601ac046a38084ccb7cd721"));
         checkpoints.put(200000, new Sha256Hash("000000000000034a7dedef4a161fa058a2d67a173a90155f3a2fe6fc132e0ebf"));
         */
+        checkpoints.put(0, new Sha256Hash("000000000000034a7dedef4a161fa058a2d67a173a90155f3a2fe6fc132e0ebf"));
         //Hardcoded linode ips
         dnsSeeds = new String[] {
                 "198.58.106.153",

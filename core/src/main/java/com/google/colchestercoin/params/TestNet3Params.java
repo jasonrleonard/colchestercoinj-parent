@@ -17,6 +17,7 @@
 package com.google.colchestercoin.params;
 
 import com.google.colchestercoin.core.NetworkParameters;
+import com.google.colchestercoin.core.Sha256Hash;
 import com.google.colchestercoin.core.Utils;
 import org.spongycastle.util.encoders.Hex;
 
@@ -30,29 +31,24 @@ public class TestNet3Params extends NetworkParameters {
     public TestNet3Params() {
         super();
         id = ID_TESTNET;
-        packetMagic = 0xfcc1b7dc;
+        packetMagic = 0xfbc0b6db;
+        port = 29333;
+        addressHeader = 28;
+        p2shHeader = 22;
+        acceptableAddressCodes = new int[] { addressHeader, p2shHeader };
         interval = INTERVAL;
         targetTimespan = TARGET_TIMESPAN;
-        proofOfWorkLimit = Utils.decodeCompactBits(0x1e0ffff0L);
-        port = 19333;
-        addressHeader = 111;
-        p2shHeader = 196;
-        acceptableAddressCodes = new int[] { addressHeader, p2shHeader };
-        dumpedPrivateKeyHeader = 239;
-        genesisBlock.setTime(1320884152L);
-        genesisBlock.setDifficultyTarget(0x1d018ea7L);
-        genesisBlock.setNonce(3562614017L);
+        proofOfWorkLimit = Utils.decodeCompactBits(0x1d0fffffL);
+        dumpedPrivateKeyHeader = 156;
+        genesisBlock.setTime(1460409903L);
+        genesisBlock.setDifficultyTarget(0x1e0ffff0);
+        genesisBlock.setNonce(106749L);
         spendableCoinbaseDepth = 100;
         subsidyDecreaseBlockCount = 840000;
+        genesisBlock.setMerkleRoot(new Sha256Hash("0072849199923b05d61ffb0814527b730778c5a479fa869581316c187e6ec1da"));
         String genesisHash = genesisBlock.getHashAsString();
         LOGGER.info("Genesis Hash: " + genesisHash.toString());
-        checkState(genesisHash.equals("54477b4910d7f39fb05db75ece889d1fd690c4357b00268a54e7239f757b5d6c"));
-        alertSigningKey = Hex.decode("04302390343f91cc401d56d68b123028bf52e5fca1939df127f63c6467cdf9c8e2c14b61104cf817d0b780da337893ecc4aaff1309e536162dabbdb45200ca2b0a");
-
-        dnsSeeds = new String[] {
-                "testnet-seed.colchestercoin.petertodd.org",
-                "testnet-seed.bluematt.me"
-        };
+        dnsSeeds = null;
     }
 
     private static TestNet3Params instance;
